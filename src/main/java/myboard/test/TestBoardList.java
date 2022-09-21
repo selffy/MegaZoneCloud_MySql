@@ -11,7 +11,7 @@ public class TestBoardList {
 		BoardListService boardListService = new BoardListDAOImpl();
 		
 		try {
-			System.out.println(boardListService.listBoard());		
+			System.out.println(boardListService.listBoard(null, null));		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
