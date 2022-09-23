@@ -28,11 +28,17 @@ public class MyboardConstants {
 		}
 	}
 
-	public final static String LIST_SQL  = " select * from board ";
-	
-	public final static String WRITE_SQL = " insert into board (btitle, bcontent, bwdate, bdomain, bwriterid) ";
-	
-	public final static String UPDATE_SQL = " update board set btitle=?, bcontent=?, bdomain=?, bwriterid=? ";
-	
-	public final static String DELETE_SQL = " delete board where bid=? ";
+//	public final static String LIST_SQL  = " select * from board order by bid desc ";
+//	
+//	public final static String WRITE_SQL = " insert into board (btitle, bcontent, bwdate, bdomain, bwriterid) ";
+//	
+//	public final static String UPDATE_SQL = " update board set btitle=?, bcontent=?, bdomain=?, bwriterid=? ";
+//	
+//	public final static String DELETE_SQL = " delete board where bid=? ";
+//	
+////	public final static String 	LIST_DOMAIN_SQL = select * from board where bdomain=? order by bid desc 
+////			
+////	public final static String LIST_SEARCH_SQL_PREPEND= select * from board 
+////	
+////	public final static String LIST_SEARCH_SQL_APPEND= order by bid desc 
 }

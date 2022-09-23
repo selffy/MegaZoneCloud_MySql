@@ -1,3 +1,4 @@
+<%@page import="myboard.dao.impl.BoardDAOImpl"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="myboard.dto.BoardDTO"%>
@@ -19,7 +20,7 @@
 	searchMap.put("searchDomain", searchDomainParam);
 	searchMap.put("searchText", searchTextParam);
 	
-	
+	pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(bdomainParam, searchMap));
 %>
 
 <!DOCTYPE html>
@@ -33,22 +34,23 @@
 	<h3>게시물 리스트화면</h3>
 </div>
 <div>
-    <!-- <form name="searchForm" action="/MyBoard/jsp/listBoard.jsp"> --> 
-		<select name="bdomainSelect" onchange="location.href='/MyBoard/jsp/listBoard.jsp?bdomain='+this.value; " >
-			<option value="" <c:out value="${bdomainParam == '' ? 'selected' : '' }"/>>전체</option>
-			<option value="notice" <c:out value="${bdomainParam== 'notice' ? 'selected' : '' }"/>>공지</option>
-			<option value="humor" <c:out value="${bdomainParam== 'humor' ? 'selected' : '' }"/>>유머</option>
-			<option value="free" <c:out value="${bdomainParam== 'free' ? 'selected' : '' }"/>>자유</option>
-      	</select> &nbsp;&nbsp;
+	<form name="searchForm" action="/MyBoard/jsp/listBoard.jsp">
+			<select name="domainSelect" onchange="location.href='/MyBoard/jsp/listBoard.jsp?bdomain='+this.value; " >
+				<option value="" ${param.bdomain==''? 'selected' : ''}>전체</option>
+				<option value="notice" ${param.bdomain=='notice'? 'selected' : ''}>공지</option>
+				<option value="humour" ${param.bdomain=='humour'? 'selected' : ''}>유머</option>
+				<option value="free" ${param.bdomain=='free'? 'selected' : ''}>자유</option>
+			</select>&nbsp;&nbsp;
       		
 		<select name="searchDomain">
-	      <option value="btitle">제목</option>
-	      <option value="bwriterid">작성자</option>
+	      <option value="" ${param.searchDomain == '' ? 'selected' : '' }/>전체</option>
+	      <option value="btitle" "${param.searchDomain == 'btitle' ? 'selected' : '' }/>제목</option>
+	      <option value="bwriterid" ${param.searchDomain == 'bwriterid' ? 'selected' : '' }/>작성자</option>
 	     </select> &nbsp;
 	      
-	     <input type="text" name="searchText"/> &nbsp;
-	     <input type="button" value="검색" oclclick="this.form.submit();">
-    <!-- </form> --> 
+	     <input type="text" name="searchText" value="${param.searchText}"/> &nbsp;
+	     <input type="button" value="검색" onlclick="this.form.submit();"/>
+    </form>
 </div>
 <div>
 	<table>

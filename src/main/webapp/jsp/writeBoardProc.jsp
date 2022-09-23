@@ -19,5 +19,6 @@
 	} else {
 		out.print("<script>alert('입력 오류가 발생했습니다!' loaction.href='/MyBoard/jsp/listBoard.jsp';</script>");
 	}
+	response.sendRedirect("/MyBoard/jsp/listBoard.jsp");	
 %>
 
