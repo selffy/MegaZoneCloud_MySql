@@ -5,11 +5,11 @@ import java.util.List;
 import myboard.dto.BoardFileDTO;
 import myboard.service.BoardFileService;
 
-public class AbstractBoardFIleDAO extends BoardFileDTO implements BoardFileService{
+public abstract class AbstractBoardFIleDAO extends BoardDAOImpl implements BoardFileService{
 
 	@Override
-	public List<BoardFileDTO> listBoardFile() throws Exception {
-		// TODO Auto-generated method stub
+	public List<BoardFileDTO> listBoardFile(int bid) throws Exception {
+	// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -24,14 +24,8 @@ public class AbstractBoardFIleDAO extends BoardFileDTO implements BoardFileServi
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public int deleteBoardFile(int bfid) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int writeBoardFile(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -54,11 +54,6 @@ public class BoardFileDTO implements Serializable{
 		this.bfbid = bfbid;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardFileDTO [bfid=" + bfid + ", bfcfn=" + bfcfn + ", bfsfn=" + bfsfn + ",bfsize=" + bfsize + ", bfbid=" + bfbid + "]";
-	}
-
 	public String getBfsfn() {
 		return bfsfn;
 	}
@@ -66,6 +61,13 @@ public class BoardFileDTO implements Serializable{
 	public void setBfsfn(String bfsfn) {
 		this.bfsfn = bfsfn;
 	}
+
+	@Override
+	public String toString() {
+		return "BoardFileDTO [bfid=" + bfid + ", bfcfn=" + bfcfn + ", bfsfn=" + bfsfn + ", bfsize=" + bfsize
+				+ ", bfbid=" + bfbid + "]";
+	}
+	
 	
 }
 

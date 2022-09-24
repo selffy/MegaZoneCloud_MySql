@@ -5,35 +5,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import myboard.util.ConnectionManager;
 
 import myboard.constants.MyboardConstants;
 import myboard.dto.BoardFileDTO;
-import myboard.util.ConnectionManager;
 
 public class BoardFileListDAOImpl extends AbstractBoardFIleDAO {
 
 	@Override
-	public List<BoardFileDTO> listBoardFile() throws Exception {
-		Connection conn = ConnectionManager.getConnection();
-		String sql = MyboardConstants.querys.getProperty("FILE_WRITE_SQL");
+	public List<BoardFileDTO> listBoardFile(int bid) throws Exception {
+
+		Connection conn = getConnection();
+		String sql = MyboardConstants.querys.getProperty("FILE_LIST_SQL");
+		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, bid);
 		
 		ResultSet rs = pstmt.executeQuery();
-		List<BoardFileDTO> list = new ArrayList<BoardFileDTO>();
+		List<BoardFileDTO>list = null;
 		
-		if(rs!=null) {
+		if (rs != null) {
+			list = new ArrayList<BoardFileDTO>();
 			while (rs.next()) {
 				BoardFileDTO boardFileDTO = new BoardFileDTO();
 				boardFileDTO.setBfid(rs.getInt("bfid"));
-				boardFileDTO.setBfcfn(rs.getString("bcfn"));
-				boardFileDTO.setBfsfn(rs.getString("bsfn"));
+				boardFileDTO.setBfcfn(rs.getString("bfcfn"));
+				boardFileDTO.setBfsfn(rs.getString("bfsfn"));
 				boardFileDTO.setBfsize(rs.getInt("bfsize"));
 				boardFileDTO.setBfbid(rs.getInt("bfbid"));
+				
+				list.add(boardFileDTO);
+
 			}
-		}	
-		ConnectionManager.closeConnection(rs, pstmt, conn);
+		}
+		closeConnection(rs, pstmt, conn);
 		return list;
-		
-	}
+
+	}// BoardFileListDAOEmpl
 }

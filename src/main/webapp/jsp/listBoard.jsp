@@ -57,9 +57,10 @@
 		<colgroup>
 			<col width="5%"/>
 			<col width="5%"/>
-			<col width="50%"/>
+			<col width="40%"/>
 			<col width="10%"/>
 			<col width="16%"/>
+			<col width="10%"/>
 			<col width="7%"/>
 			<col width="7%"/>
 		</colgroup>
@@ -70,6 +71,7 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일시</th>
+				<th>첨부파일수</th>
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>	
@@ -85,9 +87,10 @@
 				${boardDTO.bdomain=='humor' ? '유머' : ''}
 				${boardDTO.bdomain=='free' ? '자유' : ''}
 				</td>
-				<td><a href="/MyBoard/jsp/viewBoard.jsp?bid=${boardDTO.bid}&bno=${bno}"> ${boardDTO.btitle}</a></td>
+				<td><a href="/MyBoard/jsp/viewBoard.jsp?bid=${boardDTO.bid}&bno=${bno}">${boardDTO.btitle}</a></td>
 				<td>${boardDTO.bwriterid}"</td>
-				<td><fmt:formatDate value='${boardDTO.bwdate}' pattern='yyyy,MM.dd.hh:mm'/></td>
+				<td><fmt:formatDate value='${boardDTO.bwdate}' pattern='yyyy.MM.dd.hh:mm'/></td>
+				<td></td>
 				<td><a href="/MyBoard/jsp/UpdateBoardForm.jsp?bid=${boardDTO.bid}">[수정]</a></td>
 				<td><a href="/MyBoard/jsp/deleteBoardProc.jsp?bid=${boardDTO.bid}">[삭제]</a></td>
 			</tr>

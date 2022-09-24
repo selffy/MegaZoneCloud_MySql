@@ -15,16 +15,15 @@ public class BoardFIleViewDAOImpl extends AbstractBoardFIleDAO{
 	@Override
 	public BoardFileDTO viewBoardFile(int bfid) throws Exception {
 		
-		Connection conn = ConnectionManager.getConnection();
+		Connection conn = getConnection();
 		String sql = MyboardConstants.querys.getProperty("FILE_VIEW_SQL");
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, bfid);
 		ResultSet rs = pstmt.executeQuery();
 		BoardFileDTO boardFileDTO = null;
-		
 		if(rs!=null) {
 			while (rs!=null && rs.next()) {
-				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO = new BoardFileDTO();
 				boardFileDTO.setBfid(rs.getInt("bfid"));
 				boardFileDTO.setBfcfn(rs.getString("bcfn"));
 				boardFileDTO.setBfsfn(rs.getString("bsfn"));
@@ -33,6 +32,12 @@ public class BoardFIleViewDAOImpl extends AbstractBoardFIleDAO{
 			}
 		}	
 		ConnectionManager.closeConnection(rs, pstmt, conn);
-		return list;
+		return boardFileDTO;
+	}
+
+	@Override
+	public List<BoardFileDTO> listBoardFile(int bid) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

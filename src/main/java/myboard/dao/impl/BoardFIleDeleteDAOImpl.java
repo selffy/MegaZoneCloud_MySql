@@ -2,24 +2,30 @@ package myboard.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 import myboard.constants.MyboardConstants;
-import myboard.util.ConnectionManager;
+import myboard.dto.BoardFileDTO;
 
 public class BoardFIleDeleteDAOImpl extends AbstractBoardFIleDAO{
 
-	@Override
-	public int deleteBoardFile(int bfid) throws Exception {
+	   @Override
+	   public int deleteBoardFile(int bfid) throws Exception {
+	      
+	      Connection conn =getConnection();
+	      String sql = MyboardConstants.querys.getProperty("FILE_DELETE_SQL");
+	      PreparedStatement pstmt = conn.prepareStatement(sql);
+	      pstmt.setInt(1, bfid);
+	      int result = pstmt.executeUpdate();
+	      closeConnection(pstmt, conn);
+	      
+	      return result;
+	   }
 
-		Connection conn = ConnectionManager.getConnection();
-		String sql = MyboardConstants.querys.getProperty("FILE_DELTET_SQL");
-		PreparedStatement psmt = conn.prepareStatement(sql);
-		
-		psmt.setInt(1, bfid);
-		int result = psmt.executeUpdate();
-		ConnectionManager.closeConnection(psmt, conn);
-		
-		return bfid;
+	@Override
+	public List<BoardFileDTO> listBoardFile(int bid) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

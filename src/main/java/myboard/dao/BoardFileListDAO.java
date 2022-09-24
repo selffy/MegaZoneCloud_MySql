@@ -8,7 +8,7 @@ import myboard.service.BoardFileService;
 public interface BoardFileListDAO extends BoardFileService {
  
 	@Override
-	default List<BoardFileDTO> listBoardFile() throws Exception {
+	default List<BoardFileDTO> listBoardFile(int bid) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

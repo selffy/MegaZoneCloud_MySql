@@ -1,13 +1,12 @@
 package myboard.service;
 
-import java.io.File;
 import java.util.List;
 
 import myboard.dto.BoardFileDTO;
 
 public interface BoardFileService extends BoardService {
 
-	public abstract List<BoardFileDTO> listBoardFile() throws Exception;
+	public abstract List<BoardFileDTO> listBoardFile(int bid) throws Exception;
 	
 	public abstract BoardFileDTO viewBoardFile(int bfid) throws Exception;
 	

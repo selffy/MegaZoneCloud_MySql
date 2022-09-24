@@ -34,6 +34,10 @@
 			</select><br/>
 		제목 :  <input type="text" name="btitle" width="400px" value="${boardDTO.btitle}"><br/>
 		내용 : <textarea name="bcontent" rows="20" cols="100">${boardDTO.bcontent}</textarea><br/>	
+		첨부파일1 : <input type="file" name="file1"/><br/>
+		첨부파일2 : <input type="file" name="file1"/><br/>
+		첨부파일3 : <input type="file" name="file1"/><br/>
+
 		<input type="button" value="수정" onclick="this.form.submit();"/>
 	</form>
 	</div>

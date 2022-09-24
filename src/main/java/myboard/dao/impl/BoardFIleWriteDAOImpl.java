@@ -22,7 +22,7 @@ public class BoardFIleWriteDAOImpl extends AbstractBoardFIleDAO{
 		pstmt.setInt(4, bid);
 		
 		int result = pstmt.executeUpdate();
-		ConnectionManager.closeConnection(pstmt, conn);
+		closeConnection(pstmt, conn);
 		return result;
 		
 		
